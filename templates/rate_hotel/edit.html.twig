@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<title>Edit RateHotel</title>
+
+{% block body %}
+    <h1>Edit RateHotel</h1>
+
+    {{ include('rate_hotel/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_rate_hotel_index') }}">back to list</a>
+
+    {{ include('rate_hotel/_delete_form.html.twig') }}
+{% endblock %}

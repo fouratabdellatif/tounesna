@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<title>Commentaire index</title>
+
+{% block body %}
+    <h1>Commentaire index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Idcom</th>
+                <th>Contenue</th>
+                <th>Dateajc</th>
+                <th>Auteur</th>
+                <th>IdHotel</th>
+                <th>IdEvent</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commentaire in commentaires %}
+            <tr>
+                <td>{{ commentaire.idcom }}</td>
+                <td>{{ commentaire.contenue }}</td>
+                <td>{{ commentaire.dateajc ? commentaire.dateajc|date('d-m-Y') : '' }}</td>
+                <td>{{ commentaire.auteur }}</td>
+                <td>{{ commentaire.idHotel }}</td>
+                <td>{{ commentaire.idEvent }}</td>
+                <td>
+                    <a href="{{ path('app_commentaire_show', {'idcom': commentaire.idcom}) }}">show</a>
+                    <a href="{{ path('app_commentaire_edit', {'idcom': commentaire.idcom}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_commentaire_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "base-back.html.twig" %}
+
+{% block title %}
+	Plat
+{% endblock %}
+
+{% block pagewrapper %}
+    <h1>Plat</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Nomplat</th>
+                <td>{{ plat.nomplat }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+					<td>
+						<img style="height: 100px; object-fit: cover;" class="img-fluid" src="{{ asset('/uploads/' ~ plat.image) }}" alt="">
+					</td>
+            </tr>
+            <tr>
+                <th>Restaurant</th>
+                <td>{{ plat.restaurant }}</td>
+            </tr>
+            <tr>
+                <th>Chef</th>
+                <td>{{ plat.chef }}</td>
+            </tr>
+            <tr>
+                <th>Region</th>
+                <td>{{ plat.region }}</td>
+            </tr>
+            <tr>
+                <th>Gouvernorat</th>
+                <td>{{ plat.gouvernorat.nomGouver }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_plat_index') }}">back to list</a>
+
+    <a href="{{ path('admin_plat_edit', {'idplat': plat.idplat}) }}">edit</a>
+
+    {{ include('platAdmin/_delete_form.html.twig') }}
+{% endblock %}

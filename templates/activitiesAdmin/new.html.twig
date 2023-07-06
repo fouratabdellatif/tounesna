@@ -1,0 +1,13 @@
+{% extends "base-back.html.twig" %}
+
+{% block title %}
+	New Activity
+{% endblock %}
+
+{% block pagewrapper %}
+    <h1>Create new Activity</h1>
+
+    {{ include('activitiesAdmin/_form.html.twig') }}
+
+    <a href="{{ path('admin_activities_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base-back.html.twig" %}
+
+{% block title %}
+	Edit Hotel
+{% endblock %}
+
+{% block pagewrapper %}
+    <h1>Edit Hotel</h1>
+
+    {{ include('hotelAdmin/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('admin_hotel_index') }}">back to list</a>
+
+    {{ include('hotelAdmin/_delete_form.html.twig') }}
+{% endblock %}

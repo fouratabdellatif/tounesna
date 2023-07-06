@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<title>Plat</title>
+
+{% block body %}
+    <h1>Plat</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Nomplat</th>
+                <td>{{ plat.nomplat }}</td>
+            </tr>
+            <tr>
+                <th>Restaurant</th>
+                <td>{{ plat.restaurant }}</td>
+            </tr>
+            <tr>
+                <th>Chef</th>
+                <td>{{ plat.chef }}</td>
+            </tr>
+            <tr>
+                <th>Region</th>
+                <td>{{ plat.region }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('plats') }}">back to list</a>
+{% endblock %}

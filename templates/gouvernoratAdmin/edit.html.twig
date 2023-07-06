@@ -1,0 +1,15 @@
+{% extends "base-back.html.twig" %}
+
+{% block title %}
+	Edit Gouvernorat
+{% endblock %}
+
+{% block pagewrapper %}
+    <h1>Edit Gouvernorat</h1>
+
+    {{ include('gouvernoratAdmin/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('admin_gouvernorat_index') }}">back to list</a>
+
+    {{ include('gouvernoratAdmin/_delete_form.html.twig') }}
+{% endblock %}

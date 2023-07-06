@@ -1,0 +1,15 @@
+{% extends "base-back.html.twig" %}
+
+{% block title %}
+	Edit Activity
+{% endblock %}
+
+{% block pagewrapper %}
+    <h1>Edit Activity</h1>
+
+    {{ include('activitiesAdmin/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('admin_activities_index') }}">back to list</a>
+
+    {{ include('activitiesAdmin/_delete_form.html.twig') }}
+{% endblock %}

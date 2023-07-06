@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<title>RateHotel index</title>
+
+{% block body %}
+    <h1>RateHotel index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdRate</th>
+                <th>IdUser</th>
+                <th>Rate</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rate_hotel in rate_hotels %}
+            <tr>
+                <td>{{ rate_hotel.idRate }}</td>
+                <td>{{ rate_hotel.idUser }}</td>
+                <td>{{ rate_hotel.rate }}</td>
+                <td>
+                    <a href="{{ path('app_rate_hotel_show', {'idRate': rate_hotel.idRate}) }}">show</a>
+                    <a href="{{ path('app_rate_hotel_edit', {'idRate': rate_hotel.idRate}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_rate_hotel_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "base-back.html.twig" %}
+
+{% block title %}
+	Evenement
+{% endblock %}
+
+{% block pagewrapper %}
+    <h1>Evenement</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Region</th>
+                <td>{{ evenement.region }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ evenement.description }}</td>
+            </tr>
+            <tr>
+                <th>Datev</th>
+                <td>{{ evenement.datev ? evenement.datev|date('d-m-Y') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ evenement.titre }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>
+						<img style="height: 100px; object-fit: cover;" class="img-fluid" src="{{ asset('/uploads/' ~ evenement.image) }}" alt=""></td>
+            </tr>
+            <tr>
+                <th>Gouvernorat</th>
+                <td>{{ evenement.gouvernorat.nomGouver }}</td>
+            </tr>
+            <tr>
+                <th>Auteur</th>
+                <td>{{ evenement.auteur }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ evenement.price }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_evenement_index') }}">back to list</a>
+
+    <a href="{{ path('admin_evenement_edit', {'idev': evenement.idev}) }}">edit</a>
+
+    {{ include('evenementAdmin/_delete_form.html.twig') }}
+{% endblock %}

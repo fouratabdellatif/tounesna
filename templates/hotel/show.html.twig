@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<title>Hotel</title>
+
+{% block body %}
+    <h1>Hotel</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Idh</th>
+                <td>{{ hotel.idh }}</td>
+            </tr>
+            <tr>
+                <th>Nomhotel</th>
+                <td>{{ hotel.nomhotel }}</td>
+            </tr>
+            <tr>
+                <th>NbEtoile</th>
+                <td>{{ hotel.nbEtoile }}</td>
+            </tr>
+            <tr>
+                <th>Site</th>
+                <td>{{ hotel.site }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ hotel.image }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_hotel_index') }}">back to list</a>
+
+    <a href="{{ path('app_hotel_edit', {'idh': hotel.idh}) }}">edit</a>
+
+    {{ include('hotel/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,237 @@
+{% extends "base-front.html.twig" %}
+
+{% block title %}
+	Activities - Tounesna
+{% endblock %}
+
+{% block navs %}
+	<li>
+		<a href="{{ path('home') }}">Home</a>
+	</li>
+	<li>
+		<a href="{{ path('gouvernorats') }}">Gouvernorats</a>
+	</li>
+	<li>
+		<a href="{{ path('hotels') }}">Hotels</a>
+	</li>
+	<li>
+		<a href="{{ path('plats') }}">Plats</a>
+	</li>
+	<li class="active">
+		<a href="{{ path('activities') }}">Activities</a>
+	</li>
+	<li>
+		<a href="{{ path('events') }}">events</a>
+	</li>
+	<li>
+		<a href="{{ path('shop') }}">shop</a>
+	</li>
+	{# <li><a href="{{ path('aboutus') }}">About Us</a></li> #}
+	{# <li><a href="{{ path('contact') }}">Contact</a></li> #}
+{% endblock %}
+
+{% block mininavs %}
+	<li>
+		<a href="{{ path('home') }}">Home</a>
+	</li>
+	<li>
+		<a href="{{ path('gouvernorats') }}">Gouvernorats</a>
+	</li>
+	<li>
+		<a href="{{ path('hotels') }}">Hotels</a>
+	</li>
+	<li>
+		<a href="{{ path('plats') }}">Plats</a>
+	</li>
+	<li class="active">
+		<a href="{{ path('activities') }}">Activities</a>
+	</li>
+	<li>
+		<a href="{{ path('events') }}">events</a>
+	</li>
+	<li>
+		<a href="{{ path('shop') }}">shop</a>
+	</li>
+	{# <li><a href="{{ path('aboutus') }}">About Us</a></li> #}
+	{# <li><a href="{{ path('contact') }}">Contact</a></li> #}
+{% endblock %}
+
+{% block content %}
+
+	<div style="margin: 0 0 50px 0;" class="page-top" id="templatemo_services"></div>
+	{% for message in app.flashes('notice') %}
+		<div class="alert alert-success ">
+			{{ message }}
+		</div>
+	{% endfor %}
+	<a style="margin: 50px 0 50px 200px;" href="{{ path('app_participation_activity_index') }}" class="price-btn">Mes Participations Activities</a>
+	<!-- /.page-header -->
+
+	{# <div class="middle-content">
+	            <div class="container">
+	                <div class="row">
+	                    <div class="col-md-4">
+	                        <div class="widget-item">
+	                            <h3 class="widget-title">Latest News</h3>
+	                            <div class="post-small">
+	                                <div class="post-date">
+	                                    <span class="time">18</span>
+	                                    <span>June</span>
+	                                </div> <!-- /.post-thumb -->
+	                                <div class="post-content">
+	                                    <h4><a href="#">Lorem Ipsum</a></h4>
+	                                    <span>Donec auctor iaculis</span>
+	                                    <p>Aenean laoreet ornare purus. Nunc condimentum augue sed massa iaculis, vel blandit sapien consectetur.</p>
+	                                </div> <!-- /.post-content -->
+	                            </div> <!-- /.post-small -->
+	                            <div class="post-small">
+	                                <div class="post-date">
+	                                    <span class="time">14</span>
+	                                    <span>June</span>
+	                                </div> <!-- /.post-thumb -->
+	                                <div class="post-content">
+	                                    <h4><a href="#">Lorem Ipsum</a></h4>
+	                                    <span>Donec auctor iaculis</span>
+	                                    <p>Cras mollis bibendum fringilla. Donec malesuada convallis ligula, iaculis tincidunt massa tempus at.</p>
+	                                </div> <!-- /.post-content -->
+	                            </div> <!-- /.post-small -->
+	                            <div class="post-small">
+	                                <div class="post-date">
+	                                    <span class="time">12</span>
+	                                    <span>June</span>
+	                                </div> <!-- /.post-thumb -->
+	                                <div class="post-content">
+	                                    <h4><a href="#">Lorem Ipsum</a></h4>
+	                                    <span>Donec auctor iaculis</span>
+	                                    <p>Maecenas lacinia sodales aliquet. Maecenas consequat orci et neque convallis.</p>
+	                                </div> <!-- /.post-content -->
+	                            </div> <!-- /.post-small -->
+	                        </div> <!-- /.widget-item -->
+	                    </div> <!-- /.col-md-4 -->
+	                    <div class="col-md-4">
+	                        <div class="widget-item">
+	                            <h3 class="widget-title">Consulting</h3>
+	                            <div class="sample-thumb">
+	                                <img src="images/event_1.jpg" alt="">
+	                            </div> <!-- /.sample-thumb -->
+	                            <h4 class="consult-title">Donec auctor iaculis libero ut ullamcorper</h4>
+	                            <p>Integer viverra erat nisi, sed faucibus velit ultricies facilisis. Nam eu felis ac ex fermentum scelerisque nec sed urna. Cras mollis bibendum fringilla.<br><br>Fusce condimentum neque eget diam blandit consequat. Integer at urna at risus ultrices vestibulum. Fusce pharetra viverra commodo.</p>
+	                        </div> <!-- /.widget-item -->
+	                    </div> <!-- /.col-md-4 -->
+	                    <div class="col-md-4">
+	                        <div class="widget-item">
+	                            <h3 class="widget-title">Our Activities</h3>
+	                            <div class="service-item">
+	                                <div class="service-icon">
+	                                    <i class="fa fa-bell-o"></i>
+	                                </div> <!-- /.service-icon -->
+	                                <div class="service-content">
+	                                    <h4>Fusce pharetra</h4>
+	                                    <p>Change icons by <a rel="nofollow" href="http://fontawesome.info/font-awesome-icon-world-map/" target="_blank">Font Awesome</a> (version 4). Example: <strong>&lt;i class=&quot;fa fa-bell-o&quot;&gt;&lt;/i&gt;</strong></p>
+	                                </div> <!-- /.service-content -->
+	                            </div> <!-- /.service-item -->
+	                            <div class="service-item">
+	                                <div class="service-icon">
+	                                    <i class="fa fa-cogs"></i>
+	                                </div> <!-- /.service-icon -->
+	                                <div class="service-content">
+	                                    <h4>Nunc rhoncus</h4>
+	                                    <p>Mauris vel tincidunt purus. Aenean laoreet ornare purus. Nunc condimentum augue sed massa.</p>
+	                                </div> <!-- /.service-content -->
+	                            </div> <!-- /.service-item -->
+	                            <div class="service-item">
+	                                <div class="service-icon">
+	                                    <i class="fa fa-pencil"></i>
+	                                </div> <!-- /.service-icon -->
+	                                <div class="service-content">
+	                                    <h4>Curabitur quis</h4>
+	                                    <p>Nunc aliquam vestibulum veliesat, et aliquet lorem aliquet nec. Sed orsum rhoncus.</p>
+	                                </div> <!-- /.service-content -->
+	                            </div> <!-- /.service-item -->
+	                        </div> <!-- /.widget-item -->
+	                    </div> <!-- /.col-md-4 -->
+	                </div> <!-- /.row -->
+	            </div> <!-- /.container -->
+	        </div> <!-- /.middle-content -->
+	
+	
+	
+	        <div class="go-act">
+	            <div class="container">
+	                <div class="row">
+	                    <div class="col-md-4">
+	                        <div class="first-map"></div>
+	                    </div> <!-- /.col-md-4 -->
+	                    <div class="col-md-8">
+	                        <div class="act-btn">
+	                            <div class="inner">
+	                                <div class="price">
+	                                    $5,600
+	                                </div> <!-- /.price -->
+	                                <div class="title">
+	                                    <h2>Europa Tour</h2>
+	                                    <span>Belgium, Austria, Poland, France, England</span>
+	                                </div>
+	                            </div> <!-- /.inner -->
+	                            <a href="#" class="link">
+	                                <i class="fa fa-angle-right"></i>
+	                            </a>
+	                        </div> <!-- /.act-btn -->
+	                    </div> <!-- /.col-md-8 -->
+	                </div> <!-- /.row -->
+	            </div> <!-- /.container -->
+	        </div> <!-- /.go-act --> #}
+
+
+	<div style="margin-top: 80px;" class="ticket-list">
+		<div class="container">
+			<div class="row">
+				{% for activity in activities %}
+					<div class="col-md-3 col-sm-6">
+						<div class="ticket-item">
+							<h4>
+								<a href="#">{{ activity.description }}</a>
+							</h4>
+							<p>
+								<span style="color: #2f7c72;" class="green">In:
+								</span>
+								{{ activity.adresse }}</p>
+							<p>
+								<span style="color: #2f7c72;" class="green"></span>
+								{{ activity.type }}</p>
+							<div style="margin: 20px 0;" class="sample-thumb">
+								<img src="{{ asset('/uploads/' ~ activity.image) }}" alt="New Event" title="New Event">
+							</div>
+							<!-- /.sample-thumb -->
+							<p>
+								<span style="color: #2f7c72;" class="green">N° Tel:
+								</span>
+								{{ activity.numContact }}</p>
+							<p>
+								<span style="color: #2f7c72;" class="green">On:
+								</span>
+								{{ activity.date ? activity.date|date('d-m-Y') : '' }}</p>
+							<p>
+								<span style="color: #2f7c72;" class="green">Price:
+								</span>
+								{{ activity.price }}
+								TND</p>
+							<a href="{{ path('app_participation_activity_participer', {'id': activity.idActivity}) }}" class="ticket-btn">Participer</a>
+						</div>
+						<!-- /.ticket-item -->
+					</div>
+					<!-- /.col-md-3 -->
+				{% else %}
+
+					<div class="col-md-3 col-sm-6">
+						no records found
+					</div>
+				{% endfor %}
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.container -->
+	</div>
+	<!-- /.ticket-list -->
+
+{% endblock %}

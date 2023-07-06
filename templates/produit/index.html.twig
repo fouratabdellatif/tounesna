@@ -1,0 +1,111 @@
+{% extends "base-front.html.twig" %}
+
+{% block title %}
+	Hotels - Tounesna
+{% endblock %}
+
+{% block navs %}
+	<li>
+		<a href="{{ path('home') }}">Home</a>
+	</li>
+	<li>
+		<a href="{{ path('gouvernorats') }}">Gouvernorats</a>
+	</li>
+	<li>
+		<a href="{{ path('hotels') }}">Hotels</a>
+	</li>
+	<li>
+		<a href="{{ path('plats') }}">Plats</a>
+	</li>
+	<li>
+		<a href="{{ path('activities') }}">Activities</a>
+	</li>
+	<li>
+		<a href="{{ path('events') }}">events</a>
+	</li>
+	<li class="active">
+		<a href="{{ path('shop') }}">shop</a>
+	</li>
+	{# <li><a href="{{ path('aboutus') }}">About Us</a></li> #}
+	{# <li><a href="{{ path('contact') }}">Contact</a></li> #}
+{% endblock %}
+
+{% block mininavs %}
+	<li>
+		<a href="{{ path('home') }}">Home</a>
+	</li>
+	<li>
+		<a href="{{ path('gouvernorats') }}">Gouvernorats</a>
+	</li>
+	<li>
+		<a href="{{ path('hotels') }}">Hotels</a>
+	</li>
+	<li>
+		<a href="{{ path('plats') }}">Plats</a>
+	</li>
+	<li>
+		<a href="{{ path('activities') }}">Activities</a>
+	</li>
+	<li>
+		<a href="{{ path('events') }}">events</a>
+	</li>
+	<li class="active">
+		<a href="{{ path('shop') }}">shop</a>
+	</li>
+	{# <li><a href="{{ path('aboutus') }}">About Us</a></li> #}
+	{# <li><a href="{{ path('contact') }}">Contact</a></li> #}
+{% endblock %}
+
+{% block content %}
+
+	<div style="margin: 0 0 50px 0;" class="page-top" id="templatemo_contact"></div>
+	<!-- /.page-header -->
+
+	<a style="margin: 50px 0 50px 200px;" href="{{ path('app_commande_index') }}" class="price-btn">Mes Commandes</a>
+	<div class="middle-content">
+		<div style="margin-bottom: 60px;" class="container">
+			<div class="row">
+				<div class="our-listing owl-carousel">
+					{% for produit in produits %}
+						<div class="list-item">
+							<div
+								class="list-thumb">
+								{# <div class="title">
+								                                <h4>{{ produit.gouvernorat.nomGouver }}</h4>
+								                            </div> #}
+								<img style="height: 280px; object-fit: cover;" src="{{ asset('/uploads/' ~ produit.image) }}" alt="produit">
+							</div>
+							<!-- /.list-thumb -->
+							<div class="list-content">
+								<div style="display: flex;">
+									<h5 style="margin-left: 0; margin-right: auto;">{{ produit.nomp }}</h5>
+									<h5 style="margin-right: 0; margin-left: auto; color: #78b999;">{{ produit.price }}
+										TND</h5>
+								</div>
+								<div style="display: flex;">
+									<span style="margin-left: 0; margin-right: auto;">{{ produit.type }}</span>
+									<span style="margin-right: 0; margin-left: auto; color: #78b999;">{{ produit.gouvernorat.nomGouver }}</span>
+								</div>
+								<div
+									style="display: flex; margin-top: -20px;">
+									{# <a style="margin-left: 0; margin-right: auto;" href="#" class="price-btn">Book Now</a> #}
+									<a style="margin-right: 0; margin-left: auto;" href="{{ path('add_panier', { 'id': produit.idp }) }}" class="price-btn">
+										<i class="fa fa-shopping-cart"></i>
+									</a>
+								</div>
+							</div>
+							<!-- /.list-content -->
+						</div>
+						<!-- /.list-item -->
+					{% else %}
+						<div class="list-item">
+							no records found
+						</div>
+					{% endfor %}
+				</div>
+				<!-- /.our-listing -->
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.container -->
+	{% endblock %}

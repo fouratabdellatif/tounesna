@@ -1,0 +1,116 @@
+{% extends "base-back.html.twig" %}
+
+{% block title %}
+	Activities
+{% endblock %}
+
+{% block pagewrapper %}
+
+	<style>
+		#calendrier {
+			width: 80%;
+			margin: auto;
+			height: 500px;
+		}
+	</style>
+
+	<h1>Activities</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Description</th>
+				<th>Adresse</th>
+				<th>NumContact</th>
+				<th>Image</th>
+				<th>Date</th>
+				<th>Type</th>
+				<th>Price</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for activity in activities %}
+				<tr>
+					<td>{{ activity.description }}</td>
+					<td>{{ activity.adresse }}</td>
+					<td>{{ activity.numContact }}</td>
+					<td>
+						<img style="height: 100px; object-fit: cover;" class="img-fluid" src="{{ asset('/uploads/' ~ activity.image) }}" alt="">
+					</td>
+					<td>{{ activity.date ? activity.date|date('d-m-Y') : '' }}</td>
+					<td>{{ activity.type }}</td>
+					<td>{{ activity.price }}</td>
+					<td>
+						<a href="{{ path('admin_activities_show', {'idActivity': activity.idActivity}) }}">show</a>
+						<a href="{{ path('admin_activities_edit', {'idActivity': activity.idActivity}) }}">edit</a>
+						{{ include('activitiesAdmin/_delete_form.html.twig') }}
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="8">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<div id="calendrier"></div>
+
+
+	<script>
+		window.onload = () => {
+let calendarElt = document.querySelector("#calendrier")
+let calendar = new FullCalendar.Calendar(calendarElt, {
+initialView: 'dayGridMonth',
+locale: 'fr',
+timeZone: 'Europe/Paris',
+headerToolbar: {
+start: 'prev,next today',
+center: 'title',
+end: 'dayGridMonth,timeGridWeek'
+},
+events: {{ data|raw }},
+editable: true,
+selectable: true,
+nowIndicator: true,
+dayMaxEvents: false,
+navLinks: true,
+eventClick: '',
+select: function (info) {
+window.location.href = "{{ path('admin_activities_new') }}";
+}
+})
+calendar.on('eventChange', (e) => {
+let url = `/admin/activities/api/${
+e.event.id
+}/edit`
+console.log(e.event.id)
+let donnees = {
+"id": e.event.id,
+"type": e.event.title,
+"date": e.event.start,
+"cours": e.event.title,
+"title": e.event.title,
+"description": e.event.extendedProps.type,
+"start": e.event.start,
+"end": e.event.start,
+"backgroundColor": e.event.backgroundColor,
+"borderColor": e.event.borderColor,
+"textColor": e.event.textColor,
+"allDay": e.event.allDay
+}
+
+let xhr = new XMLHttpRequest
+xhr.open("PUT", url)
+xhr.send(JSON.stringify(donnees))
+})
+calendar.render()
+}
+	</script>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.js" integrity="sha256-DBxkGZLxKsLKhz054qUpBqtotG00r9AELGpSigJujLg=" crossorigin="anonymous"></script>
+
+	<a href="{{ path('admin_activities_new') }}">Create new</a>
+{% endblock %}

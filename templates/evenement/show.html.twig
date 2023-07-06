@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<title>Evenement</title>
+
+{% block body %}
+    <h1>Evenement</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Idev</th>
+                <td>{{ evenement.idev }}</td>
+            </tr>
+            <tr>
+                <th>Region</th>
+                <td>{{ evenement.region }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ evenement.description }}</td>
+            </tr>
+            <tr>
+                <th>Datev</th>
+                <td>{{ evenement.datev ? evenement.datev|date('d-m-Y') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ evenement.titre }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ evenement.image }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_evenement_index') }}">back to list</a>
+
+    <a href="{{ path('app_evenement_edit', {'idev': evenement.idev}) }}">edit</a>
+
+    {{ include('evenement/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base-back.html.twig" %}
+
+{% block title %}
+	Commande
+{% endblock %}
+
+{% block pagewrapper %}
+    <h1>Commande</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Num</th>
+                <td>{{ commande.num }}</td>
+            </tr>
+            <tr>
+                <th>Productqty</th>
+                <td>{{ commande.productqty }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ commande.date ? commande.date|date('d-m-Y') : '' }}</td>
+            </tr>
+            <tr>
+                <th>User</th>
+                <td>{{ commande.user.nom }} {{ commande.user.prenom }} | {{ commande.user.email }}</td>
+            </tr>
+            <tr>
+                <th>Produit</th>
+                <td>{{ commande.produit.nomp }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ commande.produit.price }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_commande_index') }}">back to list</a>
+{% endblock %}

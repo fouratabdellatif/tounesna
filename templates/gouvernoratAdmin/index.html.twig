@@ -1,0 +1,67 @@
+{% extends "base-back.html.twig" %}
+
+{% block title %}
+	Gouvernorats
+{% endblock %}
+
+{% block pagewrapper %}
+	<h1>Gouvernorats</h1>
+
+	<form id="search-form" action="{{ path('gouvernorat_search') }}" method="get">
+		<div class="form-group">
+			<input type="text" name="q" class="form-control" value="{{ query }}">
+		</div>
+		<button type="submit" class="btn btn-primary">Search</button>
+	</form>
+
+	<hr>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Nom Gouvernorat</th>
+				<th>Region</th>
+				<th>Image</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for gouvernorat in gouvernorats %}
+				<tr>
+					<td>{{ gouvernorat.nomGouver }}</td>
+					<td>{{ gouvernorat.region }}</td>
+					<td>
+						<img style="height: 100px; object-fit: cover;" class="img-fluid" src="{{ asset('/uploads/' ~ gouvernorat.image) }}" alt="">
+					</td>
+					<td>
+						<a href="{{ path('admin_gouvernorat_show', {'idGouver': gouvernorat.idGouver}) }}">show</a>
+						<a href="{{ path('admin_gouvernorat_edit', {'idGouver': gouvernorat.idGouver}) }}">edit</a>
+						{{ include('gouvernoratAdmin/_delete_form.html.twig') }}
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="4">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{{ path('admin_gouvernorat_new') }}">Create new</a>
+
+	<script>
+		$(function () {
+$('#search-form').submit(function (e) {
+e.preventDefault();
+
+$.ajax({
+url: $(this).attr('action'),
+data: $(this).serialize(),
+success: function (data) {
+$('#search-results').html(data);
+}
+});
+});
+});
+	</script>
+{% endblock %}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Commande Print</title>
+    <link href="{{ asset('admin/css/sb-admin-2.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('front/css/style.css') }}" />
+</head>
+<body>
+<header class="clearfix">
+    <div id="logo">
+        TOUNESNA
+    </div>
+    <h1 align="center">TOUNESNA - toutes les Commandes</h1>
+    <hr></hr>
+    <div class="table-wrapper">
+      <h1>Commandes</h1>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Num</th>
+                <th>Productqty</th>
+                <th>Date</th>
+                <th>User</th>
+                <th>Produit</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commande in commandes %}
+            <tr>
+                <td>{{ commande.num }}</td>
+                <td>{{ commande.productqty }}</td>
+                <td>{{ commande.date ? commande.date|date('d-m-Y') : '' }}</td>
+                <td>{{ commande.user.nom }} {{ commande.user.prenom }} | {{ commande.user.email }}</td>
+                <td>{{ commande.produit.nomp }}</td>
+                <td>{{ commande.produit.price }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</header>
+</main>
+
+</body>

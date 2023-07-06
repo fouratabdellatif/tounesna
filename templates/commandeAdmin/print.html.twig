@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Order Print</title>
+    <link rel="stylesheet" href="/style.css" media="all" />
+</head>
+<body>
+<header class="clearfix">
+    <div id="logo">
+        TOUNESNA
+    </div>
+    <h1 align="center">TOUNESNA Shop </h1>
+    <hr></hr>
+    <div><span>Order </span> {{ commande.num }} </div>
+    <hr></hr>
+    <div id="company" class="clearfix">
+        <div><span>Product: </span> {{ commande.produit.nomp }}  </div>
+        <div><span>Client: </span> {{ commande.user.nom }} {{ commande.user.prenom }} | {{ commande.user.email }}  </div>
+        <div><span>Quantity: </span> {{ commande.productqty }}  </div>
+        <div><span>Date: </span> {{ commande.date ? commande.date|date('d-m-Y') : '' }}  </div>
+        <hr></hr>
+        <div><span>Total Price: </span> {{ commande.productqty * commande.produit.price }} TND </div>
+    </div>
+</header>
+</main>
+
+</body>

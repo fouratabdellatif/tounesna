@@ -1,0 +1,102 @@
+{% extends "base-front.html.twig" %}
+
+{% block title %}
+	Mes Commandes - Tounesna
+{% endblock %}
+
+{% block navs %}
+	<li>
+		<a href="{{ path('home') }}">Home</a>
+	</li>
+	<li>
+		<a href="{{ path('gouvernorats') }}">Gouvernorats</a>
+	</li>
+	<li>
+		<a href="{{ path('hotels') }}">Hotels</a>
+	</li>
+	<li>
+		<a href="{{ path('plats') }}">Plats</a>
+	</li>
+	<li>
+		<a href="{{ path('activities') }}">Activities</a>
+	</li>
+	<li>
+		<a href="{{ path('events') }}">events</a>
+	</li>
+	<li>
+		<a href="{{ path('shop') }}">shop</a>
+	</li>
+	{# <li><a href="{{ path('aboutus') }}">About Us</a></li> #}
+	{# <li><a href="{{ path('contact') }}">Contact</a></li> #}
+{% endblock %}
+
+{% block mininavs %}
+	<li>
+		<a href="{{ path('home') }}">Home</a>
+	</li>
+	<li>
+		<a href="{{ path('gouvernorats') }}">Gouvernorats</a>
+	</li>
+	<li>
+		<a href="{{ path('hotels') }}">Hotels</a>
+	</li>
+	<li>
+		<a href="{{ path('plats') }}">Plats</a>
+	</li>
+	<li>
+		<a href="{{ path('activities') }}">Activities</a>
+	</li>
+	<li>
+		<a href="{{ path('events') }}">events</a>
+	</li>
+	<li>
+		<a href="{{ path('shop') }}">shop</a>
+	</li>
+	{# <li><a href="{{ path('aboutus') }}">About Us</a></li> #}
+	{# <li><a href="{{ path('contact') }}">Contact</a></li> #}
+{% endblock %}
+
+{% block content %}
+
+	<div class="page-top" id="templatemo_contact"></div>
+	<div class="middle-content">
+		<div style="margin-bottom: 60px;" class="container">
+			<div class="row">
+				<h1>Mes Commandes</h1>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Num</th>
+							<th>Productqty</th>
+							<th>Date</th>
+							<th>Produit</th>
+							<th>Price</th>
+							<th>actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for commande in commandes %}
+							<tr>
+								<td>{{ commande.num }}</td>
+								<td>{{ commande.productqty }}</td>
+								<td>{{ commande.date ? commande.date|date('d-m-Y') : '' }}</td>
+								<td>{{ commande.produit.nomp }}</td>
+								<td>{{ commande.produit.price }}</td>
+								<td>
+									<a href="{{ path('app_commande_show', {'id': commande.id}) }}">show</a>
+									<a href="{{ path('app_print_commande', {'id': commande.id}) }}">export</a>
+								</td>
+							</tr>
+						{% else %}
+							<tr>
+								<td colspan="5">no records found</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+				<a href="{{ path('app_print_commandes', {'id': 0}) }}">export all</a>
+				<a href="{{ path('shop') }}">go back to shop</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}

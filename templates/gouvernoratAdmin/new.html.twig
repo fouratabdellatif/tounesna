@@ -1,0 +1,13 @@
+{% extends "base-back.html.twig" %}
+
+{% block title %}
+	New Gouvernorat
+{% endblock %}
+
+{% block pagewrapper %}
+    <h1>Create new Gouvernorat</h1>
+
+    {{ include('gouvernoratAdmin/_form.html.twig') }}
+
+    <a href="{{ path('admin_gouvernorat_index') }}">back to list</a>
+{% endblock %}

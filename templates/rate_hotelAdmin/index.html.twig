@@ -1,0 +1,43 @@
+{% extends "base-back.html.twig" %}
+
+{% block title %}
+	Ratings Hotels
+{% endblock %}
+
+{% block pagewrapper %}
+	<h1>RateHotel index</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>User</th>
+				<th>Rate</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for rate_hotel in rate_hotels %}
+				<tr>
+					<td>
+						{% for user in users %}
+							{% if user.iduser == rate_hotel.idUser %}
+								{{ user.nom }}
+								{{ user.prenom }}
+								|
+								{{ user.email }}
+							{% endif %}
+						{% endfor %}
+					</td>
+					<td>{{ rate_hotel.rate }}</td>
+					<td>
+						<a href="{{ path('admin_rate_hotel_show', {'idRate': rate_hotel.idRate}) }}">show</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="4">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

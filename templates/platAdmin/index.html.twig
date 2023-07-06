@@ -1,0 +1,80 @@
+{% extends "base-back.html.twig" %}
+
+{% block title %}
+	Plat index
+{% endblock %}
+
+{% block pagewrapper %}
+	<h1>Plat index</h1>
+
+	<form id="search-form" action="{{ path('plat_search') }}" method="get">
+		<div class="form-group">
+			<input type="text" name="q" class="form-control" value="{{ query }}">
+		</div>
+		<button type="submit" class="btn btn-primary">Search</button>
+	</form>
+
+	<hr>
+
+	<div id="div_chart"></div>
+
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+		{{ gc_draw(piechart, "div_chart") }}</script>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Nomplat</th>
+				<th>Image</th>
+				<th>Restaurant</th>
+				<th>Chef</th>
+				<th>Region</th>
+				<th>Gouvernorat</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for plat in plats %}
+				<tr>
+					<td>{{ plat.nomplat }}</td>
+					<td>
+						<img style="height: 100px; object-fit: cover;" class="img-fluid" src="{{ asset('/uploads/' ~ plat.image) }}" alt="">
+					</td>
+					<td>{{ plat.restaurant }}</td>
+					<td>{{ plat.chef }}</td>
+					<td>{{ plat.region }}</td>
+					<td>{{ plat.gouvernorat.nomGouver }}</td>
+					<td>
+						<a href="{{ path('admin_plat_show', {'idplat': plat.idplat}) }}">show</a>
+						<a href="{{ path('admin_plat_edit', {'idplat': plat.idplat}) }}">edit</a>
+
+						{{ include('platAdmin/_delete_form.html.twig') }}
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="6">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{{ path('admin_plat_new') }}">Create new</a>
+
+	<script>
+		$(function () {
+$('#search-form').submit(function (e) {
+e.preventDefault();
+
+$.ajax({
+url: $(this).attr('action'),
+data: $(this).serialize(),
+success: function (data) {
+$('#search-results').html(data);
+}
+});
+});
+});
+	</script>
+{% endblock %}

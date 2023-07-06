@@ -1,0 +1,81 @@
+{% extends "base-back.html.twig" %}
+
+{% block title %}
+	Evenements
+{% endblock %}
+
+{% block pagewrapper %}
+	<h1>Evenements</h1>
+
+	<form id="search-form" action="{{ path('evenement_search') }}" method="get">
+		<div class="form-group">
+			<input type="text" name="q" class="form-control" value="{{ query }}">
+		</div>
+		<button type="submit" class="btn btn-primary">Search</button>
+	</form>
+
+	<hr>
+
+    <a class="btn btn-primary" href="{{path('sort_by_asc_date')}}">Date Asc</a>
+    <a class="btn btn-primary" href="{{path('sort_by_desc_date')}}">Date Desc</a>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Region</th>
+				<th>Description</th>
+				<th>Datev</th>
+				<th>Titre</th>
+				<th>Image</th>
+				<th>Gouvernorat</th>
+				<th>Auteur</th>
+				<th>Price</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for evenement in evenements %}
+				<tr>
+					<td>{{ evenement.region }}</td>
+					<td>{{ evenement.description }}</td>
+					<td>{{ evenement.datev ? evenement.datev|date('d-m-Y') : '' }}</td>
+					<td>{{ evenement.titre }}</td>
+					<td>
+						<img style="height: 100px; object-fit: cover;" class="img-fluid" src="{{ asset('/uploads/' ~ evenement.image) }}" alt="">
+					</td>
+					<td>{{ evenement.gouvernorat.nomGouver }}</td>
+					<td>{{ evenement.auteur }}</td>
+					<td>{{ evenement.price }}</td>
+					<td>
+						<a href="{{ path('admin_evenement_show', {'idev': evenement.idev}) }}">show</a>
+						<a href="{{ path('admin_evenement_edit', {'idev': evenement.idev}) }}">edit</a>
+
+						{{ include('evenementAdmin/_delete_form.html.twig') }}
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="7">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{{ path('admin_evenement_new') }}">Create new</a>
+
+	<script>
+		$(function () {
+$('#search-form').submit(function (e) {
+e.preventDefault();
+
+$.ajax({
+url: $(this).attr('action'),
+data: $(this).serialize(),
+success: function (data) {
+$('#search-results').html(data);
+}
+});
+});
+});
+	</script>
+{% endblock %}

@@ -1,0 +1,122 @@
+{% extends "base-front.html.twig" %}
+
+{% block title %}
+	ParticipationEvent - Tounesna
+{% endblock %}
+
+{% block navs %}
+	<li>
+		<a href="{{ path('home') }}">Home</a>
+	</li>
+	<li>
+		<a href="{{ path('gouvernorats') }}">Gouvernorats</a>
+	</li>
+	<li>
+		<a href="{{ path('hotels') }}">Hotels</a>
+	</li>
+	<li>
+		<a href="{{ path('plats') }}">Plats</a>
+	</li>
+	<li>
+		<a href="{{ path('activities') }}">Activities</a>
+	</li>
+	<li>
+		<a href="{{ path('events') }}">events</a>
+	</li>
+	<li>
+		<a href="{{ path('shop') }}">shop</a>
+	</li>
+	{# <li><a href="{{ path('aboutus') }}">About Us</a></li> #}
+	{# <li><a href="{{ path('contact') }}">Contact</a></li> #}
+{% endblock %}
+
+{% block mininavs %}
+	<li>
+		<a href="{{ path('home') }}">Home</a>
+	</li>
+	<li>
+		<a href="{{ path('gouvernorats') }}">Gouvernorats</a>
+	</li>
+	<li>
+		<a href="{{ path('hotels') }}">Hotels</a>
+	</li>
+	<li>
+		<a href="{{ path('plats') }}">Plats</a>
+	</li>
+	<li>
+		<a href="{{ path('activities') }}">Activities</a>
+	</li>
+	<li>
+		<a href="{{ path('events') }}">events</a>
+	</li>
+	<li>
+		<a href="{{ path('shop') }}">shop</a>
+	</li>
+	{# <li><a href="{{ path('aboutus') }}">About Us</a></li> #}
+	{# <li><a href="{{ path('contact') }}">Contact</a></li> #}
+{% endblock %}
+
+{% block content %}
+
+	<div class="page-top" id="templatemo_contact"></div>
+	<div class="middle-content">
+		<div style="margin-bottom: 60px;" class="container">
+			<div class="row">
+				<h1>ParticipationEvent</h1>
+
+				<table class="table">
+					<tbody>
+						<tr>
+							<th>NbPlaces</th>
+							<td>{{ participation_event.nbPlaces }}</td>
+						</tr>
+						<tr>
+							<th>Date</th>
+							<td>{{ participation_event.date ? participation_event.date|date('d-m-Y') : '' }}</td>
+						</tr>
+						<tr>
+							<th>Titre</th>
+							<td>{{  participation_event.event.titre }}</td>
+						</tr>
+						<tr>
+							<th>Description</th>
+							<td>{{ participation_event.event.description }}</td>
+						</tr>
+						<tr>
+							<th>Region</th>
+							<td>{{  participation_event.event.region }}</td>
+						</tr>
+						<tr>
+							<th>Image</th>
+							<td>
+								<img style="height: 100px; object-fit: cover;" class="img-fluid" src="{{ asset('/uploads/' ~ participation_event.event.image) }}" alt="">
+							</td>
+						</tr>
+						<tr>
+							<th>Date event</th>
+							<td>{{  participation_event.event.datev ? participation_event.event.datev|date('d-m-Y') : '' }}</td>
+						</tr>
+						<tr>
+							<th>Auteur</th>
+							<td>{{  participation_event.event.auteur }}</td>
+						</tr>
+						<tr>
+							<th>Gouvernorat</th>
+							<td>{{  participation_event.event.gouvernorat.nomGouver }}</td>
+						</tr>
+						<tr>
+							<th>Price</th>
+							<td>{{  participation_event.event.price * participation_event.nbPlaces }}</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<a href="{{ path('app_participation_event_index') }}">back to list</a>
+
+				<a href="{{ path('app_participation_event_edit', {'id': participation_event.id}) }}">edit</a>
+
+				{{ include('participation_event/_delete_form.html.twig') }}
+			</div>
+		</div>
+	</div>
+</div>{% endblock %}

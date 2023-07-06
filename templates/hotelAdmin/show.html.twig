@@ -1,0 +1,41 @@
+{% extends "base-back.html.twig" %}
+
+{% block title %}
+	Hotel
+{% endblock %}
+
+{% block pagewrapper %}
+    <h1>Hotel</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Nomhotel</th>
+                <td>{{ hotel.nomhotel }}</td>
+            </tr>
+            <tr>
+                <th>NbEtoile</th>
+                <td>{{ hotel.nbEtoile }}</td>
+            </tr>
+            <tr>
+                <th>Site</th>
+                <td>{{ hotel.site }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>
+						<img style="height: 100px; object-fit: cover;" class="img-fluid" src="{{ asset('/uploads/' ~ hotel.image) }}" alt=""></td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ hotel.price }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_hotel_index') }}">back to list</a>
+
+    <a href="{{ path('admin_hotel_edit', {'idh': hotel.idh}) }}">edit</a>
+
+    {{ include('hotelAdmin/_delete_form.html.twig') }}
+{% endblock %}

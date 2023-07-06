@@ -1,0 +1,123 @@
+{% extends "base-front.html.twig" %}
+
+{% block title %}
+Home - Tounesna
+{% endblock %}
+
+{% block navs %}
+    <li class="active"><a href="{{ path('home') }}">Home</a></li>
+    <li><a href="{{ path('gouvernorats') }}">Gouvernorats</a></li>
+    <li><a href="{{ path('hotels') }}">Hotels</a></li>
+    <li><a href="{{ path('plats') }}">Plats</a></li>
+    <li><a href="{{ path('activities') }}">Activities</a></li>
+    <li><a href="{{ path('events') }}">events</a></li>
+    <li><a href="{{ path('shop') }}">shop</a></li>
+    {# <li><a href="{{ path('aboutus') }}">About Us</a></li> #}
+    {# <li><a href="{{ path('contact') }}">Contact</a></li> #}
+{% endblock %}
+
+{% block mininavs %}
+    <li class="active"><a href="{{ path('home') }}">Home</a></li>
+    <li><a href="{{ path('gouvernorats') }}">Gouvernorats</a></li>
+    <li><a href="{{ path('hotels') }}">Hotels</a></li>
+    <li><a href="{{ path('plats') }}">Plats</a></li>
+    <li><a href="{{ path('activities') }}">Activities</a></li>
+    <li><a href="{{ path('events') }}">events</a></li>
+    <li><a href="{{ path('shop') }}">shop</a></li>
+    {# <li><a href="{{ path('aboutus') }}">About Us</a></li> #}
+    {# <li><a href="{{ path('contact') }}">Contact</a></li> #}
+{% endblock %}
+
+{% block content %}
+        <div class="flexslider">
+            <ul class="slides">
+                <li>
+                    <div class="overlay"></div>
+                    <img src="images/templatemo_slide_1.jpg" alt="Special 1">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-5 col-lg-4">
+                                <div class="flex-caption visible-lg">
+                                    <span class="price">$7,500</span>
+                                    <h3 class="title">Venice, Italy</h3>
+                                    <p>Travel is a responsive Bootstrap layout from 
+                                    <span class="blue">template</span><span class="green">mo</span> website.
+										All images used in this template are from 
+                            			<a rel="nofollow" href="http://unsplash.com" target="_parent">Unsplash</a>.</p>
+                                    <a href="#" class="slider-btn">Pre-booking</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="overlay"></div>
+                    <img src="images/templatemo_slide_2.jpg" alt="Special 2">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-5 col-lg-4">
+                                <div class="flex-caption visible-lg">
+                                    <span class="price">$12,400</span>
+                                    <h3 class="title">Bercelona, Spain</h3>
+                                    <p>You may visit <a href="http://tourkrub.co" target="_parent">Tour Krub</a> for Thai Tour Packages. Duis fermentum nibh sit amet felis mattis, eu convallis risus egestas.</p>
+                                    <a href="#" class="slider-btn">Reserve Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="overlay"></div>
+                    <img src="images/templatemo_slide_3.jpg" alt="Special 3">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-5 col-lg-4">
+                                <div class="flex-caption visible-lg">
+                                    <span class="price">$20,800</span>
+                                    <h3 class="title">Basel, Switzerland</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis fermentum nibh sit amet felis mattis, eu convallis risus egestas.</p>
+                                    <a href="#" class="slider-btn">Réserver</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div> <!-- /.flexslider -->
+
+        
+        
+        <div class="container">
+            <div class="row">
+                <div class="our-listing owl-carousel">
+        {% for hotel in hotels %}
+                    <div class="list-item">
+                        <div class="list-thumb">
+                            <div class="title">
+                                <h4>{{ hotel.gouvernorat.nomGouver }}</h4>
+                            </div>
+                            <img src="{{ asset('/uploads/' ~ hotel.image) }}" alt="destination 1">
+                        </div> <!-- /.list-thumb -->
+                        <div class="list-content">
+                        <div style="display: flex;">
+                            <h5 style="margin-left: 0; margin-right: auto;">{{ hotel.site }}</h5>
+                            <h5 style="margin-right: 0; margin-left: auto; color: #78b999;">{{ hotel.nbEtoile }}</h5>
+                        </div>
+                        <div style="display: flex;">
+                            <span style="margin-left: 0; margin-right: auto;">{{ hotel.nomhotel }}</span>
+                            <span style="margin-right: 0; margin-left: auto; color: #78b999;">{{ hotel.price }} TND</span>
+                        </div>
+                            <a href="#" class="price-btn">Réserver</a>
+                        </div> <!-- /.list-content -->
+                    </div> <!-- /.list-item -->
+        {% else %}
+                    <div class="list-item">
+                    no records found
+            </div>
+        {% endfor %}
+                </div> <!-- /.our-listing -->
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+
+		<div class="middle-content"></div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base-back.html.twig" %}
+
+{% block title %}
+	New Plat
+{% endblock %}
+
+{% block pagewrapper %}
+    <h1>Create new Plat</h1>
+
+    {{ include('platAdmin/_form.html.twig') }}
+
+    <a href="{{ path('admin_plat_index') }}">back to list</a>
+{% endblock %}

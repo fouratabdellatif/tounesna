@@ -1,0 +1,198 @@
+{% extends "base-front.html.twig" %}
+
+{% block title %}
+	events - Tounesna
+{% endblock %}
+
+{% block navs %}
+	<li>
+		<a href="{{ path('home') }}">Home</a>
+	</li>
+	<li>
+		<a href="{{ path('gouvernorats') }}">Gouvernorats</a>
+	</li>
+	<li>
+		<a href="{{ path('hotels') }}">Hotels</a>
+	</li>
+	<li>
+		<a href="{{ path('plats') }}">Plats</a>
+	</li>
+	<li>
+		<a href="{{ path('activities') }}">Activities</a>
+	</li>
+	<li class="active">
+		<a href="{{ path('events') }}">events</a>
+	</li>
+	<li>
+		<a href="{{ path('shop') }}">shop</a>
+	</li>
+	{# <li><a href="{{ path('aboutus') }}">About Us</a></li> #}
+	{# <li><a href="{{ path('contact') }}">Contact</a></li> #}
+{% endblock %}
+
+{% block mininavs %}
+	<li>
+		<a href="{{ path('home') }}">Home</a>
+	</li>
+	<li>
+		<a href="{{ path('gouvernorats') }}">Gouvernorats</a>
+	</li>
+	<li>
+		<a href="{{ path('hotels') }}">Hotels</a>
+	</li>
+	<li>
+		<a href="{{ path('plats') }}">Plats</a>
+	</li>
+	<li>
+		<a href="{{ path('activities') }}">Activities</a>
+	</li>
+	<li class="active">
+		<a href="{{ path('events') }}">events</a>
+	</li>
+	<li>
+		<a href="{{ path('shop') }}">shop</a>
+	</li>
+	{# <li><a href="{{ path('aboutus') }}">About Us</a></li> #}
+	{# <li><a href="{{ path('contact') }}">Contact</a></li> #}
+{% endblock %}
+
+{% block content %}
+
+	<div style="margin: 0 0 50px 0;" class="page-top" id="templatemo_events"></div>
+	{% for message in app.flashes('notice') %}
+		<div class="alert alert-success ">
+			{{ message }}
+		</div>
+	{% endfor %}
+	<a style="margin: 50px 0 50px 200px;" href="{{ path('app_participation_event_index') }}" class="price-btn">Mes Participations Events</a>
+	<!-- /.page-header -->
+
+	<div class="middle-content">
+		<div
+			class="container">
+
+			{# <div class="row"><!-- first row -->
+			                
+			                	<div class="col-md-4"><!-- first column -->
+			                    
+			                        <div class="widget-item">
+			                        
+			                            <h3 class="widget-title">Upcoming events</h3>
+			                            <div class="service-item">
+			                                <div class="service-icon">
+			                                    <i class="fa fa-rocket"></i>
+			                                </div> <!-- /.service-icon -->
+			                              <div class="service-content">
+			                                <h4>Tour Promotion</h4>
+			                                  <p>Change icons by <a rel="nofollow" href="http://fontawesome.info/font-awesome-icon-world-map/">Font Awesome</a> (version 4). Example: <strong>&lt;i class=&quot;fa fa-rocket&quot;&gt;&lt;/i&gt;</strong></p>
+			                                </div> 
+			                                <!-- /.service-content -->
+			                            </div> <!-- /.service-item -->
+			                            
+			                            <div class="service-item">
+			                                <div class="service-icon">
+			                                    <i class="fa fa-trophy"></i>
+			                                </div> <!-- /.service-icon -->
+			                                <div class="service-content">
+			                                    <h4>Europe Tour</h4>
+			                                    <p>Nunc aliquam vestibulum veliesat, et aliquet lorem aliquet nec. Sed orsum rhoncus.</p>
+			                                </div> <!-- /.service-content -->
+			                            </div> <!-- /.service-item -->
+			                            
+			                            <div class="service-item">
+			                                <div class="service-icon">
+			                                    <i class="fa fa-heart"></i>
+			                                </div> <!-- /.service-icon -->
+			                                <div class="service-content">
+			                                    <h4>Tour to Asia</h4>
+			                                    <p>Nunc aliquam vestibulum veliesat, et aliquet lorem aliquet nec. Sed orsum rhoncus.</p>
+			                                </div> <!-- /.service-content -->
+			                            </div> <!-- /.service-item -->
+			                            
+			                            <div class="service-item">
+			                                <div class="service-icon">
+			                                    <i class="fa fa-globe"></i>
+			                                </div> <!-- /.service-icon -->
+			                                <div class="service-content">
+			                                    <h4>New Adventure</h4>
+			                                    <p>Nunc aliquam vestibulum veliesat, et aliquet lorem aliquet nec. Sed orsum rhoncus.</p>
+			                                </div> <!-- /.service-content -->
+			                            </div> <!-- /.service-item -->
+			                            
+			                        </div> <!-- /.widget-item -->
+			                        
+			                    </div> <!-- /.col-md-4 -->
+			                    
+			                    <div class="col-md-4"><!-- second column -->
+			                        <div class="widget-item">
+			                            <h3 class="widget-title">Tour Event</h3>
+			                            <div class="sample-thumb">
+			                                <img src="images/event_1.jpg" alt="New Event" title="New Event">
+			                            </div> <!-- /.sample-thumb -->
+			                            <h4 class="consult-title">Donec auctor iaculis libero</h4>
+			                            <p>Cras mollis bibendum fringilla. Donec malesuada convallis ligula, iaculis tincidunt massa tempus at. Interdum et fames ac ante ipsum primis in faucibus. Aliquam justo lectus, fermentum vitae libero. <br><br>Vestibulum congue lorem odio, at sodales nisi luctus quis. Suspendisse suscipit ligula libero, id consectetur magna dictum sed.</p>
+			                        </div> <!-- /.widget-item -->
+			                    </div> <!-- /.col-md-4 -->
+			                    
+			                    <div class="col-md-4"><!-- third column -->
+			                        <div class="widget-item">
+			                            <h3 class="widget-title">Special Eve</h3>
+			                            <div class="sample-thumb">
+			                                <img src="images/event_2.jpg" alt="Special Eve" title="Special Eve">
+			                            </div> <!-- /.sample-thumb -->
+			                            <h4 class="consult-title">Donec auctor iaculis libero ut ullamcorper</h4>
+			                            <p> Aenean in lacus ut ligula fermentum congue. Etiam et urna sodales, pellentesque leo non, volutpat lorem. Pellentesque aliquam turpis venenatis libero fermentum, in blandit nisl aliquam.<br><br>Vestibulum congue lorem odio, at sodales nisi luctus quis. Suspendisse suscipit ligula libero, id consectetur magna dictum sed.</p>
+			                        </div> <!-- /.widget-item -->
+			                    </div> <!-- /.col-md-4 -->
+			                    
+			                    
+			                    
+			                </div> <!-- /.row first --> #}
+
+			<div class="row">
+				<!-- second row -->
+				{% for evenement in evenements %}
+
+					<div
+						class="col-md-4">
+						<!-- first column -->
+						<div class="widget-item">
+							<h3 class="widget-title" style="text-transform: none; margin-bottom: -50px;">{{ evenement.titre }}
+								|
+								{{ evenement.datev ? evenement.datev|date('d-m-Y') : '' }}</h3>
+							<h4 class="consult-title">{{ evenement.region }}</h4>
+							<div class="sample-thumb">
+								<img src="{{ asset('/uploads/' ~ evenement.image) }}" alt="New Event" title="New Event">
+							</div>
+							<!-- /.sample-thumb -->
+							<div style="display: flex;">
+								<div style="margin-left: 0; margin-right: auto;">
+									<h4 class="consult-title">By:
+										{{ evenement.auteur }}</h4>
+									<h4 class="consult-title" style="margin-top: -18px;">Price:
+										{{ evenement.price }}
+										TND</h4>
+									<p style="margin-top: -18px;">About:
+										{{ evenement.description }}</p>
+								</div>
+								<div class="ticket-item">
+									<a href="{{ path('app_participation_event_participer', {'id': evenement.idev}) }}" style="margin-right: 0; margin-left: auto; height: 40px;" class="ticket-btn">Participer</a>
+								</div>
+							</div>
+						</div>
+						<!-- /.widget-item -->
+					</div>
+					<!-- /.col-md-4 -->
+				{% else %}
+
+					<div
+						class="col-md-4">
+						<!-- first column -->
+						no records found
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

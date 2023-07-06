@@ -1,0 +1,115 @@
+{% extends "base-front.html.twig" %}
+
+{% block title %}
+	Mes Participations Events - Tounesna
+{% endblock %}
+
+{% block navs %}
+	<li>
+		<a href="{{ path('home') }}">Home</a>
+	</li>
+	<li>
+		<a href="{{ path('gouvernorats') }}">Gouvernorats</a>
+	</li>
+	<li>
+		<a href="{{ path('hotels') }}">Hotels</a>
+	</li>
+	<li>
+		<a href="{{ path('plats') }}">Plats</a>
+	</li>
+	<li>
+		<a href="{{ path('activities') }}">Activities</a>
+	</li>
+	<li>
+		<a href="{{ path('events') }}">events</a>
+	</li>
+	<li>
+		<a href="{{ path('shop') }}">shop</a>
+	</li>
+	{# <li><a href="{{ path('aboutus') }}">About Us</a></li> #}
+	{# <li><a href="{{ path('contact') }}">Contact</a></li> #}
+{% endblock %}
+
+{% block mininavs %}
+	<li>
+		<a href="{{ path('home') }}">Home</a>
+	</li>
+	<li>
+		<a href="{{ path('gouvernorats') }}">Gouvernorats</a>
+	</li>
+	<li>
+		<a href="{{ path('hotels') }}">Hotels</a>
+	</li>
+	<li>
+		<a href="{{ path('plats') }}">Plats</a>
+	</li>
+	<li>
+		<a href="{{ path('activities') }}">Activities</a>
+	</li>
+	<li>
+		<a href="{{ path('events') }}">events</a>
+	</li>
+	<li>
+		<a href="{{ path('shop') }}">shop</a>
+	</li>
+	{# <li><a href="{{ path('aboutus') }}">About Us</a></li> #}
+	{# <li><a href="{{ path('contact') }}">Contact</a></li> #}
+{% endblock %}
+
+{% block content %}
+
+	<div class="page-top" id="templatemo_contact"></div>
+	<div class="middle-content">
+		<div style="margin-bottom: 60px;" class="container">
+			<div class="row">
+				<h1>Mes Participations Events</h1>
+
+				<table class="table">
+					<thead>
+						<tr>
+							<th>NbPlaces</th>
+							<th>Date de participation</th>
+							<th>Titre</th>
+							<th>Description</th>
+							<th>Region</th>
+							<th>Image</th>
+							<th>Date event</th>
+							<th>Auteur</th>
+							<th>Gouvernorat</th>
+							<th>Price</th>
+							<th>actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for participation_event in participation_events %}
+							<tr>
+								<td>{{ participation_event.nbPlaces }}</td>
+								<td>{{ participation_event.date ? participation_event.date|date('d-m-Y') : '' }}</td>
+								<td>{{  participation_event.event.titre }}</td>
+								<td>{{ participation_event.event.description }}</td>
+								<td>{{  participation_event.event.region }}</td>
+								<td>
+									<img style="height: 100px; object-fit: cover;" class="img-fluid" src="{{ asset('/uploads/' ~ participation_event.event.image) }}" alt="">
+								</td>
+								<td>{{  participation_event.event.datev ? participation_event.event.datev|date('d-m-Y') : '' }}</td>
+								<td>{{  participation_event.event.auteur }}</td>
+								<td>{{  participation_event.event.gouvernorat.nomGouver }}</td>
+								<td>{{  participation_event.event.price * participation_event.nbPlaces }}</td>
+								<td>
+									<a href="{{ path('app_participation_event_show', {'id': participation_event.id}) }}">show</a>
+									<a href="{{ path('app_participation_event_edit', {'id': participation_event.id}) }}">edit</a>
+								</td>
+							</tr>
+						{% else %}
+							<tr>
+								<td colspan="4">no records found</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+
+				<a href="{{ path('events') }}">Back to events</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}
